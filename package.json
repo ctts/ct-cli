@@ -1,6 +1,6 @@
 {
   "name": "ct-cli",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "邻汇吧脚手架",
   "bin": {
     "ct": "./bin/ct.js"

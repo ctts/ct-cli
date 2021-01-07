@@ -6,11 +6,14 @@ const open = require('../lib/open')
 const markdown = require('../lib/usual/markdown')
 const daily = require('../lib/usual/daily')
 const initKoa = require('../lib/init/init-koa')
+const deploy = require('../lib/usual/deploy')
 
 program
   .version(version, '-v, --version')
   .usage('<command>')
-
+/**
+ * 快速打开个人项目
+ */
 program
   .command('open')
   .description('用 vscode 打开项目')
@@ -27,17 +30,23 @@ program
     open(option)
   })
 
+/**
+ * 快速初始化模板
+ */
 program
   .command('init <name>')
   .description('新建模板项目')
   .option('-k,--koa', '新建 koa 模板')
   .on('--help', () => {
   })
-  .action((name,cmd) => {
+  .action((name, cmd) => {
     const option = cleanArgs(cmd);
-    initKoa(name,option)
+    initKoa(name, option)
   })
 
+/**
+ * 快速在桌面新建 markdown
+ */
 program
   .command('mk <project-name>')
   .description('新建 markdown')
@@ -45,11 +54,24 @@ program
     markdown(name);
   })
 
+/**
+ * 快速新建日志
+ */
 program
   .command('daily')
   .description('新建日志')
   .action(() => {
     daily();
+  })
+
+/**
+ * 快速发布
+ */
+program
+  .command('deploy')
+  .description('快速发布')
+  .action(() => {
+    deploy();
   })
 
 program.parse(process.argv)

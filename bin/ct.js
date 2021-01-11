@@ -7,10 +7,18 @@ const markdown = require('../lib/usual/markdown')
 const daily = require('../lib/usual/daily')
 const initKoa = require('../lib/init/init-koa')
 const deploy = require('../lib/usual/deploy')
+const { suggestCommands } = require('../lib/utils/ways')
+
+
+// 如果不是当前已挂载的命令，会猜测用户意图
+program.arguments('<command>').action(cmd => {
+  suggestCommands(cmd);
+});
 
 program
   .version(version, '-v, --version')
   .usage('<command>')
+
 /**
  * 快速打开个人项目
  */

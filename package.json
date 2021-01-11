@@ -16,6 +16,7 @@
     "dayjs": "^1.9.6",
     "download-git-repo": "3.0.2",
     "handlebars": "^4.7.6",
+    "leven": "^3.1.0",
     "ora": "5.1.0",
     "rimraf": "2.6.3"
   },
